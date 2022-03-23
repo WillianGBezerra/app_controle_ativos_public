@@ -1,0 +1,136 @@
+CREATE TABLE tb_remessa (
+    id int NOT NULL auto_increment primary key,
+    opfiscal_id int not null,
+    FOREIGN KEY fk_opfiscal_id(opfiscal_id)
+    REFERENCES tb_opfiscal(id),
+    notafiscal int not null,
+    valor int not null,
+    emissao date not null,
+    entrada date not null,
+    ativo_id int not null,
+    FOREIGN KEY fk_ativo_id(ativo_id)
+    REFERENCES tb_ativo(id),
+    retorno date not null,
+    origem_id int not null,
+    FOREIGN KEY fk_origem_id(origem_id)
+    REFERENCES tb_empresa(id),
+    destino_id int not null,
+    FOREIGN KEY fk_destino_id(destino_id)
+    REFERENCES tb_empresa(id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
+)ENGINE=InnoDB;
+
+CREATE TABLE tb_retorno (
+    id int NOT NULL auto_increment primary key,
+    opfiscal_id int not null,
+    FOREIGN KEY fk_opfiscal_id(opfiscal_id)
+    REFERENCES tb_opfiscal(id),
+    notafiscal int not null,
+    emissao date not null,
+    remessa_id int not null,
+    FOREIGN KEY fk_remessa_id(remessa_id)
+    REFERENCES tb_remessa(id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
+)ENGINE=InnoDB;
+
+CREATE TABLE cad_ativo (
+    ativo_id int NOT NULL auto_increment primary key,
+    ativo_item int not null,
+    ativo_descricao varchar(200) not null,
+    ativo_eam int not null,
+    ativo_chassi varchar(200) not null,
+    ativo_numero int not null,
+    ativo_placa varchar(100)
+)ENGINE=InnoDB;   
+retorno
+
+CREATE TABLE tb_remessas (
+    id_remessa int NOT NULL auto_increment primary key,
+    remessa_operacao_fiscal_id int not null,
+    FOREIGN KEY fk_remessa_operacao_fiscal_id(operacao_fiscal_id)
+    REFERENCES tb_operacao_fiscal(operacao_fiscal_id),
+    remessa_nota_fiscal int not null,
+    remessa_nota_fical_emissao date not null,
+    id_ativo int not null,
+    FOREIGN KEY fk_id_ativo(id_ativo)
+    REFERENCES tb_ativo(id),
+    remessa_data_retorno date not null,
+    remessa_empresa_origem int not null,
+    FOREIGN KEY fk_remessa_empresa_destino(empresa_id)
+    REFERENCES cad_empresa(empresa_id),
+    remessa_empresa_destino int not null,
+    FOREIGN KEY fk_remessa_empresa_destino(empresa_id)
+    REFERENCES cad_empresa(empresa_id),
+    id_status int not null,
+    FOREIGN KEY fk_id_status(id_status)
+    REFERENCES tb_status(id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
+)ENGINE=InnoDB;
+
+CREATE TABLE tb_remessas(
+    id_remessa INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_operacao_fiscal INT NOT NULL,
+    FOREIGN KEY fk_id_operacao(id_operacao_fiscal) REFERENCES tb_operacao_fiscal(operacao_fiscal_id),
+    remessa_nota_fiscal INT NOT NULL,
+    remessa_nota_fiscal_emissao DATE NOT NULL,
+    id_ativo INT NOT NULL,
+    FOREIGN KEY fk_id_ativo(id_ativo) REFERENCES tb_ativo(id),
+    remessa_data_retorno DATE NOT NULL,
+    id_origem INT NOT NULL,
+    FOREIGN KEY fk_id_origem(id_origem) REFERENCES tb_empresa(empresa_id),
+    id_destino INT NOT NULL,
+    FOREIGN KEY fk_id_destino(id_destino) REFERENCES tb_empresa(empresa_id),
+    id_status INT NOT NULL,
+    FOREIGN KEY fk_id_status(id_status) REFERENCES tb_status(id) ON UPDATE CASCADE ON DELETE RESTRICT
+) ENGINE = INNODB;
+ALTER TABLE tb_remessa ADD FOREIGN KEY (id_proprietario) REFERENCES tb_empresa(empresa_id)
+
+SELECT * FROM `tb_remessa` WHERE 1
+ALTER TABLE tb_remessa ADD FOREIGN KEY (tipoMov_id) REFERENCES tb_opfiscal(tipoMov)
+
+ALTER TABLE tb_ativos ADD status_id int(11);
+
+ALTER TABLE tb_ativos ADD CONSTRAINT fk_status_id
+FOREIGN KEY(status_id) REFERENCES tb_status(id);
+
+ALTER TABLE tb_ativos ADD CONSTRAINT fk_empresa_id
+FOREIGN KEY(empresa_id) REFERENCES tb_empresa(id);
+
+
+CREATE TABLE cad_ativo (
+    status_id int NOT NULL auto_increment,
+    FOREIGN KEY fk_status(status_id)
+    REFERENCES tb_status(id),
+    empresa_id int not null,
+    FOREIGN KEY fk_empresa_id(empresa_id)
+    REFERENCES tb_empresa(id)
+)ENGINE=InnoDB;
+
+CREATE TABLE tb_empresa (
+    id int NOT NULL auto_increment,
+    razao_social varchar(200) not null,
+    cnpj varchar(200) not null,
+    endereco varchar(200) not null,
+    cidade_id int not null,
+    FOREIGN KEY fk_cidade_id (cidade_id)
+    REFERENCES tb_cidade(id)
+    status_id int not null,
+    FOREIGN KEY fk_status_id (status_id)
+    REFERENCES tb_status(id)
+)ENGINE=InnoDB;
+
+CREATE TABLE tb_opfiscal (
+    id int NOT NULL auto_increment,
+    descricao varchar(200) not null,
+    sigla_op_fiscal varchar(200) not null,
+    prazo int not null,
+    cfop_id int not null,
+    FOREIGN KEY fk_cfop_id (cfop_id)
+    REFERENCES tb_cfop(id),
+    status_id int not null,
+    FOREIGN KEY fk_status_id (status_id)
+    REFERENCES tb_status(id)
+)ENGINE=InnoDB;

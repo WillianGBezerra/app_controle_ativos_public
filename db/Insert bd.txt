@@ -1,0 +1,26 @@
+INSERT INTO cad_ativo(
+    ativo_item,
+    ativo_descricao,
+    ativo_eam,
+    ativo_chassi,
+    ativo_numero,
+    ativo_placa
+)
+VALUES(
+    3000040,
+    'TRATOR JOHN DEERE 8430',
+    140001,
+    'CQ84300001255252',
+    110002,
+    '800001'
+);
+
+UPDATE tb_remessa SET status_id = 1
+
+ALTER TABLE tb_empresa ADD ie varchar(100) AFTER cnpj
+
+INSERT INTO `tb_empresa` (`razao_social`, `nome_fantasia`, `cnpj`, `ie`, `endereco`, `cidade_id`) VALUES
+('SLC AGRÍCOLA', 'FAZENDA PANORAMA', '89096457002280', '13213132131', 'Fazenda Panorama Slc Agricola S.a. Br 020 Km 67 Zona Rural Correntina BA 47650-000', 39),
+('SLC AGRÍCOLA', 'FAZENDA PANORAMA', '89096457002280', '13213132131', 'Fazenda Panorama Slc Agricola S.a. Br 020 Km 67 Zona Rural Correntina BA 47650-000', 39),
+('SLC AGRÍCOLA', 'FAZENDA PANORAMA', '89096457002280', '13213132131', 'Fazenda Panorama Slc Agricola S.a. Br 020 Km 67 Zona Rural Correntina BA 47650-000', 39),
+('SLC AGRÍCOLA', 'FAZENDA PANORAMA', '89096457002280', '13213132131', 'Fazenda Panorama Slc Agricola S.a. Br 020 Km 67 Zona Rural Correntina BA 47650-000', 39);
