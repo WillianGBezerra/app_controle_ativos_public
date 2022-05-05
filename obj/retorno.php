@@ -125,6 +125,7 @@
 				<h5 class="lead">Registro salvo com sucesso!</h5>
 			</div>
 		<?php } ?>
+		
 		<main role="main" style="margin-bottom: 0px;padding: 20px 50px 0px 50px;"> 
 
 			<div class="card-abrir-chamado" style="border:;">

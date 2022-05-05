@@ -27,7 +27,7 @@
   ?>
 </div>
 
-<div class="fixed-bottom m-0 p-0" style="font-size: 0.8em;"> 
+<div class="fixed-bottom m-0 p-0" style="font-size: 0.75em;"> 
       <div class="navbar justify-content-center">
         <nav aria-label="Navegação de página">
           <ul class="pagination justify-content-center">

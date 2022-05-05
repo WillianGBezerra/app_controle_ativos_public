@@ -2,7 +2,7 @@
 //$view = 'remessa';
 //$acao5  = 'recuperar2';
 //require_once '../controller/ativo_controller.php';
-$start = isset($_GET['start']) ? $_GET['start'] : 0;
+// $start = isset($_GET['start']) ? $_GET['start'] : 0;
 $acao4 = 'recuperar2';
 require_once '../controller/opfiscal_controller.php';
 
@@ -11,9 +11,10 @@ require_once '../controller/empresa_controller.php';
 ?>
 <?php
 $acao8 = isset($_GET['acao8']) ? $_GET['acao8'] : 'inserir';
-echo '<pre>';
-print_r($start);
-echo '</pre>';
+$start = isset($_GET['start']) ? $_GET['start'] : 0;
+// echo '<pre>';
+// print_r($start);
+// echo '</pre>';
 ?>
 
 
@@ -62,6 +63,7 @@ echo '</pre>';
 		<?php $opfiscal_id = $_POST['opfiscal_id']?>
 		<?php $opfiscal = $_POST['opfiscal']?>
 		<?php $notafiscal = $_POST['notafiscal']?>
+		<?php $chave_nfe_remessa = $_POST['chave_nfe_remessa']?>
 		<?php $valor = $_POST['valor']?>
 		<?php $emissao = $_POST['emissao']?>
 		<?php $entrada = $_POST['entrada']?>
@@ -88,6 +90,7 @@ echo '</pre>';
 		<?php $opfiscal_id = ''?>
 		<?php $opfiscal = ''?>
 		<?php $notafiscal = ''?>
+		<?php $chave_nfe_remessa = ''?>
 		<?php $valor = ''?>
 		<?php $emissao = ''?>
 		<?php $entrada = ''?>
@@ -114,6 +117,7 @@ echo '</pre>';
 		<?php $opfiscal_id = ''?>
 		<?php $opfiscal = ''?>
 		<?php $notafiscal = ''?>
+		<?php $chave_nfe_remessa = ''?>
 		<?php $valor = ''?>
 		<?php $emissao = ''?>
 		<?php $entrada = ''?>
@@ -140,6 +144,7 @@ echo '</pre>';
 		<?php $opfiscal_id = ''?>
 		<?php $opfiscal = ''?>
 		<?php $notafiscal = ''?>
+		<?php $chave_nfe_remessa = ''?>
 		<?php $valor = ''?>
 		<?php $emissao = ''?>
 		<?php $entrada = ''?>
@@ -166,6 +171,7 @@ echo '</pre>';
 		<?php $opfiscal_id = ''?>
 		<?php $opfiscal = ''?>
 		<?php $notafiscal = ''?>
+		<?php $chave_nfe_remessa = ''?>
 		<?php $valor = ''?>
 		<?php $emissao = ''?>
 		<?php $entrada = ''?>
@@ -227,7 +233,7 @@ echo '</pre>';
 									<div class="col-sm-5">
 										<div class="form-group">
 											<label>Origem</label>
-											<select style="font-size: 1em;" name="origem_id" class="custom-select" id="origem_id" value="<?= $origem_id?>"aria-label="Selecione uma empresa" onblur="AlertaIdempresaDuplicado()" required>
+											<select style="font-size: 1em;" name="origem_id" class="custom-select" id="origem_id" value="<?= $origem_id?>"aria-label="Selecione uma empresa" onblur="AlertaIdempresaDuplicado()" placeholder="Empresa de Origem da Remessa" required>
 												<option selected="true" id="<?= $origem_id?>" value="<?= $origem_id?>"><?= $origem?></option>
 												<?php foreach($empresas as $key => $empresa):  ?>
 													<option name="" value="<?= $empresa->id?>"><?= $empresa->cnpj?> - <?= $empresa->nome_fantasia?></option>
@@ -273,19 +279,25 @@ echo '</pre>';
 										</div>
 									</div>
 									<div></div>
-									<div class="col-sm-4">
+									<input style="font-size: 1em;" class="form-control text-center" type="hidden" name="status_id" id="<?= $status_id?>" value="<?= $status_id?>">
+									<!-- <div class="col-sm-2">
 										<div class="form-group">
 											<label>Status</label>
 											<select name="status_id" class="custom-select" size="1" id="status_id" value="<?= $status_id?>" disabled aria-label="Selecione um status" style="font-size: 1em;">
 												<option selected="true" id="<?= $status_id?>" value="<?= $status_id?>"><?= $status ?></option>
-
 											</select>
+										</div>
+									</div> -->
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label>Chave</label>
+											<input style="font-size: 1em;" class="form-control text-center" type="text" size="44" maxlength="44" minlength="44" id="chave_nfe_remessa" name="chave_nfe_remessa" onblur="AlertaCheckkey()" value="<?=$chave_nfe_remessa?>" placeholder="Chave de acesso" >
 										</div>
 									</div>
 									<div class="col-sm-12 mg-auto">
 										<div class="form-group">
 											<label>Ativo</label>
-											<select style="font-size: 1em;" name="ativo_id" class="custom-select" size="5" id="ativo_id" value="<?= $ativo?>"> aria-label="Selecione um ativo" >
+											<select style="font-size: 1em;" name="ativo_id" class="custom-select" size="6" id="ativo_id" value="<?= $ativo?>"> aria-label="Selecione um ativo" >
 												<option selected="true" id="<?= $ativo_id?>" value="<?= $ativo_id?>"><?= $ativo ?> <?= $descricao ?> <?= $placa ?> <?= $eam ?> <?= $chassi ?></option>
 												<?php 
 												$acao5 = 'recuperar2';
@@ -371,8 +383,13 @@ echo '</pre>';
 				document.getElementById("destino_id").value = "";	
 			}
 		}
-		
-
+		function AlertaCheckkey() {
+			var chave = document.getElementById('chave_nfe_remessa').value;
+			if (chave.length < 44 || chave.length > 44) {
+				alert("Informar uma chave valida "+chave+"!");
+					
+			}
+		}
 		function enviarform() {
 			return confirm('Tem certeza que deseja enviar o form?')
 		}

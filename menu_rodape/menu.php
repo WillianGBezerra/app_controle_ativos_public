@@ -1,4 +1,4 @@
-<nav class="navbar sticky-top navbar-expand-sm navbar-light bg-primary" >
+<nav class="navbar sticky-top navbar-expand-sm navbar-light bg-primary">
 
 	        <!--Logo -->
 			<!--a href="" class="navbar-brand display-1 text-hide" style="background-image: url('imagens/logo-2.png');background-repeat: no-repeat; width: 100px; height: 50px;">SLC Agrícola</a-->
@@ -63,7 +63,8 @@
 		                	<a class="nav-link dropdown" style="font-size: 0.89em;"><strong>Cadastros</strong></a>
 		                    <a href="todos.ativos.php?pagina=1" class="dropdown-item btn-sm " style="font-size: 0.7em;">Ativo</a>
 		                    <a href="uploadExcel.php?acaoImp=2" class="dropdown-item btn-sm " style="font-size: 0.7em;">Importar Ativos</a>
-		                    <!--div class="dropdown-divider"></div-->
+		                    <a href="todas.categorias.php?pagina=1" class="dropdown-item btn-sm " style="font-size: 0.7em;">Categoria</a>
+		                    <div class="dropdown-divider"></div>
 		                    <!--a class="nav-link dropdown" style="font-size: 0.89em;"><strong>Empresa</strong></a-->
 		                    <a href="todas.empresas.php?pagina=1" class="dropdown-item btn-sm" style="font-size: 0.7em;">Empresa</a>
 		                    <!--div class="dropdown-divider"></div>

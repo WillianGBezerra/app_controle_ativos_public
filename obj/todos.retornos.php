@@ -16,6 +16,8 @@
   $txt_placa = isset($_GET['txt_placa']) ? $_GET['txt_placa'] : '';
   $txtid = isset($_GET['txtid']) ? $_GET['txtid'] : '';
   $txt_empresa = isset($_GET['txt_empresa']) ? $_GET['txt_empresa'] : '';
+  $txt_nferemessa = isset($_GET['txt_nferemessa']) ? $_GET['txt_nferemessa'] : '';
+  $txt_nfedevolucao = isset($_GET['txt_nfedevolucao']) ? $_GET['txt_nfedevolucao'] : '';
 
   $coluna = isset($_GET['coluna']) ? $_GET['coluna'] : '';
   $conteudo = isset($_GET['conteudo']) ? $_GET['conteudo'] : '';
@@ -89,6 +91,14 @@
     $conteudoPesq = $txt_placa;
     $conteudoSelect = 'Destino';
     $ValueconteudoSelect = 7;
+  } else if ($txt_ativoopcao == 8) {
+    $conteudoPesq = $txt_nferemessa;
+    $conteudoSelect = 'NF-e Remessa';
+    $ValueconteudoSelect = 8;
+  } else if ($txt_ativoopcao == 9) {
+    $conteudoPesq = $txt_nfedevolucao;
+    $conteudoSelect = 'NF-e Devolução';
+    $ValueconteudoSelect = 9;
   }
   /*echo '<pre>';
   print_r($retornos); 
@@ -148,13 +158,13 @@
     location.href = 'todos.retornos.php?acao9=recuperarbydate&pesqData='+pesqData+'&data_inicial='+data_inicial+'&data_final='+data_final+'&pagina=1'
   }
       //Função para pesquisa por número de nota fiscal
-  function pesquisarpornfe(pesqnfe, nfe) {
-    var pesqnfe = document.getElementById("pesqnfe").value;
-    var nfe = document.getElementById("nfe").value;
-      location.href = 'todos.retornos.php?acao9=recuperarbynfe&pesqnfe='+pesqnfe+'&nfe='+nfe+'&pagina=1'
-  }
+  // function pesquisarpornfe(pesqnfe, nfe) {
+  //   var pesqnfe = document.getElementById("pesqnfe").value;
+  //   var nfe = document.getElementById("nfe").value;
+  //     location.href = 'todos.retornos.php?acao9=recuperarbynfe&pesqnfe='+pesqnfe+'&nfe='+nfe+'&pagina=1'
+  // }
        //Função para pesquisa por número do chassi
-  function pesquisarporativo(acao9, txt_ativoopcao, txt_descricao, txt_eam, txt_chassi, txt_ativo, txt_placa, txt_empresa) {
+  function pesquisarporativo(acao9, txt_ativoopcao, txt_descricao, txt_eam, txt_chassi, txt_ativo, txt_placa, txt_empresa, txt_nferemessa, txt_nfedevolucao) {
     //$acao8 = recuperarbychassi;
     var txt_ativoopcao = document.getElementById("pesqativo").value;
     var txt_descricao = document.getElementById("inputpesqativo").value;
@@ -163,22 +173,28 @@
     var txt_ativo = document.getElementById("inputpesqativo").value;
     var txt_placa = document.getElementById("inputpesqativo").value;
     var txt_empresa = document.getElementById("inputpesqativo").value;
+    var txt_nferemessa = document.getElementById("inputpesqativo").value;
+    var txt_nfedevolucao = document.getElementById("inputpesqativo").value;
   if (txt_ativoopcao == 0) { 
         location.href = 'todos.retornos.php?&pagina=1'
       } else if (txt_ativoopcao == 1) { 
-        location.href = 'todos.retornos.php?acao9=recuperarPorAtivo&txt_descricao='+txt_descricao+'&txt_ativoopcao=1&pagina=1'
+        location.href = 'todos.retornos.php?acao9=recuperarCol&txt_descricao='+txt_descricao+'&txt_ativoopcao=1&pagina=1'
       } else if (txt_ativoopcao == 2) { 
-        location.href = 'todos.retornos.php?acao9=recuperarPorAtivo&txt_eam='+txt_eam+'&txt_ativoopcao=2&pagina=1'
+        location.href = 'todos.retornos.php?acao9=recuperarCol&txt_eam='+txt_eam+'&txt_ativoopcao=2&pagina=1'
       } else if (txt_ativoopcao == 3) { 
-        location.href = 'todos.retornos.php?acao9=recuperarPorAtivo&txt_chassi='+txt_chassi+'&txt_ativoopcao=3&pagina=1'
+        location.href = 'todos.retornos.php?acao9=recuperarCol&txt_chassi='+txt_chassi+'&txt_ativoopcao=3&pagina=1'
       } else if (txt_ativoopcao == 4) { 
-        location.href = 'todos.retornos.php?acao9=recuperarPorAtivo&txt_ativo='+txt_ativo+'&txt_ativoopcao=4&pagina=1'
+        location.href = 'todos.retornos.php?acao9=recuperarCol&txt_ativo='+txt_ativo+'&txt_ativoopcao=4&pagina=1'
       } else if (txt_ativoopcao == 5) { 
-        location.href = 'todos.retornos.php?acao9=recuperarPorAtivo&txt_placa='+txt_placa+'&txt_ativoopcao=5&pagina=1'
+        location.href = 'todos.retornos.php?acao9=recuperarCol&txt_placa='+txt_placa+'&txt_ativoopcao=5&pagina=1'
       } else if (txt_ativoopcao == 6) { 
-        location.href = 'todos.retornos.php?acao9=recuperarPorAtivo&txt_empresa='+txt_empresa+'&txt_ativoopcao=6&pagina=1'
+        location.href = 'todos.retornos.php?acao9=recuperarCol&txt_empresa='+txt_empresa+'&txt_ativoopcao=6&pagina=1'
       } else if (txt_ativoopcao == 7) { 
-        location.href = 'todos.retornos.php?acao9=recuperarPorAtivo&txt_empresa='+txt_empresa+'&txt_ativoopcao=7&pagina=1'
+        location.href = 'todos.retornos.php?acao9=recuperarCol&txt_empresa='+txt_empresa+'&txt_ativoopcao=7&pagina=1'
+      } else if (txt_ativoopcao == 8) { 
+        location.href = 'todos.retornos.php?acao9=recuperarCol&txt_nferemessa='+txt_nferemessa+'&txt_ativoopcao=8&pagina=1'
+      } else if (txt_ativoopcao == 9) { 
+        location.href = 'todos.retornos.php?acao9=recuperarCol&txt_nfedevolucao='+txt_nfedevolucao+'&txt_ativoopcao=9&pagina=1'
       }
   }
 </script>
@@ -190,12 +206,12 @@
   <?php
     require_once '../common/delete.php'
   ?>
-  <main role="main" style="margin-bottom: 1px;padding: 1.5em;">
-    <div class="card" style="margin-bottom: 1em;">
+  <main role="main" style="margin-bottom: 1em;padding: 0.5em;">
+    <div class="card" style="margin-bottom: 0.5em;">
       <nav class="navbar navbar-expand-lg mavbar-light bg-light">
         <!--Pesquisar por colunas da tabela ativo chave extrangeira da tabela remessas-->
         <div class="input-group-append"> 
-          <form class="form-inline" method="" action="../controller/remessa_controller.php?acao8=recuperarPorAtivo">
+          <form class="form-inline" method="" action="../controller/remessa_controller.php?acao8=recuperarCol">
             <div class="input-group">
               <select class="custom-select sm" name="pesqativo" id="pesqativo" aria-label="Selecione uma opção de pesquisa" title="Selecione uma opção de pesquisa" style="font-size: 0.9em" required>
                 <option value="<?= $ValueconteudoSelect ?>" selected><?= $conteudoSelect ?></option>
@@ -206,6 +222,8 @@
                 <option value="5" aria-label="Pesquisar pela placa do ativo">Placa</option>
                 <option value="6" aria-label="Pesquisar pela placa do ativo">Origem</option>
                 <option value="7" aria-label="Pesquisar pela placa do ativo">Destino</option>
+                <option value="8" aria-label="Pesquisar pela placa do ativo">NF-e Remessa</option>
+                <option value="9" aria-label="Pesquisar pela placa do ativo">NF-e Devolução</option>
               </select>          
             <div class="input-group-append">
                 <input type="text" class="form-control" id="inputpesqativo" name="inputpesqativo" value="<?=$conteudoPesq?>" placeholder="" aria-label="" title="Digite aqui" style="font-size: 0.9em" required>
@@ -265,7 +283,7 @@
             </div>  
         </form>
         </div-->
-        <div class="input-group-append" style="padding-left: 0.4em;">
+        <!-- <div class="input-group-append" style="padding-left: 0.4em;">
         <form class="form-inline" method="" action="../controller/remessa_controller.php?acao8=recuperarbynfe">  
           <div class="input-group">
              <select class="custom-select sm" name="pesqnfe" id="pesqnfe" aria-label="Selecione uma opção de pesquisa" title="Selecione uma opção de pesquisa" style="font-size: 0.9em" required>
@@ -275,16 +293,16 @@
               </select>
             <input type="text" class="form-control" placeholder="Pesquisar por NFe" title="Digite aqui" aria-label="" name="nfe" id="nfe" value="<?= $nfe?>" style="font-size: 0.9em">   
             <div class="input-group-append">
-              <!--input type="text" class="form-control" placeholder="" aria-label="" style="font-size: 0.9em"-->
+              <input type="text" class="form-control" placeholder="" aria-label="" style="font-size: 0.9em">
               <button class="btn btn-outline-primary btn-sm" type="button" onclick="pesquisarpornfe()" id="pesqPorcamposTabel" title="Clique aqui" style="font-size: 0.9em"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-123" viewBox="0 0 16 16">
                  <path d="M2.873 11.297V4.142H1.699L0 5.379v1.137l1.64-1.18h.06v5.961h1.174Zm3.213-5.09v-.063c0-.618.44-1.169 1.196-1.169.676 0 1.174.44 1.174 1.106 0 .624-.42 1.101-.807 1.526L4.99 10.553v.744h4.78v-.99H6.643v-.069L8.41 8.252c.65-.724 1.237-1.332 1.237-2.27C9.646 4.849 8.723 4 7.308 4c-1.573 0-2.36 1.064-2.36 2.15v.057h1.138Zm6.559 1.883h.786c.823 0 1.374.481 1.379 1.179.01.707-.55 1.216-1.421 1.21-.77-.005-1.326-.419-1.379-.953h-1.095c.042 1.053.938 1.918 2.464 1.918 1.478 0 2.642-.839 2.62-2.144-.02-1.143-.922-1.651-1.551-1.714v-.063c.535-.09 1.347-.66 1.326-1.678-.026-1.053-.933-1.855-2.359-1.845-1.5.005-2.317.88-2.348 1.898h1.116c.032-.498.498-.944 1.206-.944.703 0 1.206.435 1.206 1.07.005.64-.504 1.106-1.2 1.106h-.75v.96Z"/>
                   </svg>
               </button>
-               <!--a href="remessa.php?acao8=inserir" target="_parent"><button class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Novo Ativo" type="button" style="font-size: 0.9em">Pesquisar</button></a-->
+               <a href="remessa.php?acao8=inserir" target="_parent"><button class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Novo Ativo" type="button" style="font-size: 0.9em">Pesquisar</button></a>
             </div>
           </div>
         </form>
-        </div>
+        </div> -->
         <div class="card  ml-auto">
           <div class="input-group-append">
             <!--input type="text" class="form-control" placeholder="" aria-label="" style="font-size: 0.9em"-->
@@ -296,16 +314,16 @@
         </div>
       </nav>      
     </div>
-    <div class="card card-columns" style="height: 42.5em; padding: 0px; border:;">
+    <div class="card card-columns" style="height: 46.15em; padding: 0px; border:;">
             <div class="card bg-light border-light md-2 font-weight-light">
-              <div class="card-body">
+              <div class="card-body" style="height: 45.74em;">
                 <h5 class="card-title text-left">Devolução</h5>
                 <div class="">
                   <div style="" id="ativos">
                     <table class="table table-striped table-responsive-sm table-condensed table-sm text-center table-bordered table-hover" style="margin-top: 0em;font-size: 0.9em;">
                           <thead>
                             <tr>
-                              <th class="text" scope="col" style="width: 3em;">R.</th>
+                              <th class="text" scope="col" style="width: 3em;">id Rem.</th>
                               <th class="text-" scope="col" style="width: 5em;">NFe</th>
                               <th class="text-" scope="col" style="width: 6em;">Emissão</th>
                               <th class="text-" scope="col" style="width: 6em;">Saída</th>
@@ -318,13 +336,13 @@
                               <th class="text-" scope="col" style="width: 5em;">Eam</th>
                               <th class="text-" scope="col" style="width: 12em;">Chassi</th>
                               <th class="text-" scope="col" style="width: 12em;">Valor</th>
-                              <th class="text" scope="col" style="width: 3em;">Dev.</th>
+                              <th class="text" scope="col" style="width: 3em;">id Dev.</th>
                               <th class="text-" scope="col" style="width: 6em;">NFe Dev.</th>
                               
                               <th class="text-" scope="col" style="width: 7em;">Emissão</th> 
                               <th class="text-" scope="col" style="width: 6em;">Entrada</th> 
                               <th class="text-" scope="col" style="width: 2em;">Editar</th> 
-                              <th class="text-" scope="col" style="width: 2em;">Apagar</th> 
+                              <th class="text-" scope="col" style="width: 2em;">Excluir</th> 
                               <!--th class="" scope="col" colspan="2" style="width: 4em;">U/D</th--> 
                               <!--th class="" scope="col" style="width: 3em;">Excluir</th-->
                             </tr>

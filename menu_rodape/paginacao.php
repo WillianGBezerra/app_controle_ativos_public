@@ -53,9 +53,10 @@ for ($i = $inicio; $i <= $limite; $i++)
     } else if ($view == 'todos.paises') {
        echo "<ul ".$ul." ><li ".$li." ><a ".$a . "href=?pagina=" . $i . ">" . $i . "</a></li></ul> ";
     } else if ($view == 'todos.ativos') {
-      if ($acao5 == 'recuperarColuna') {
+         echo "<ul ".$ul." ><li ".$li." ><a ".$a . "href=?pagina=" . $i . ">" . $i . "</a></li></ul> ";
+      /*if ($acao5 == 'recuperarColuna') {
             echo "<ul ".$ul." ><li ".$li." ><a ".$a. "href=?acao5=recuperarColuna&termo=". $termo . "&Selected=" . $Selected . "&pagina=" . $i . ">" . $i . "</a></li></ul> ";
-      }
+      }*/
       // echo "<ul ".$ul." ><li ".$li." ><a ".$a . "href=?pagina=" . $i . ">" . $i . "</a></li></ul> ";
     } else if ($view == 'todos.retornos') {
        echo "<ul ".$ul." ><li ".$li." ><a ".$a . "href=?pagina=" . $i . ">" . $i . "</a></li></ul> ";
